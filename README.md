@@ -11,6 +11,6 @@ Process:
 
 
 There are also three supportive flowcharts in the repository:
-1. Flowchart_QueuingModel
-2. Flowchart_ActivitiesBogel
-3. Flowchart_Coupling
+1. Flowchart_Queuing - shows the logic behind the queuing model
+2. Flowchart_ActivitiesBogel - shows the logic behind the activities in Bogel's model
+3. Flowchart_Coupling - shows the coupling process (at a very high level)
