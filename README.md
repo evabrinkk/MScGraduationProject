@@ -4,8 +4,8 @@ Models and data analysis scripts used for my graduation project in MSc Engineeri
 Goal: find a robust policy for food distribution in refugee settlements given the mix of behaviour of refugees when queuing 
 
 Process:
-1. Developed a queuing model (see FinalModel_queuing_4122021)
-2. Coupled the model with the work done by Bogel (see FinalModel_withoutplots_4122021 for coupled model)
+1. Developed a queuing model (see Model_Queuing_4122021)
+2. Coupled the model with the work done by Bogel (see Model_Coupled_withoutplots_4122021 for coupled model)
 3. Run experiments  (to be added)
 4. Analyse results  (to be added)
 
