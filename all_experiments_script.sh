@@ -2,7 +2,6 @@
 
 # Script to run all the experiments in the server
 # Mikhail: make sure path is right and the number of threads
-# Don't forget to change: EXPERIMENT NAME, TABLE NAME & NB OF THREADS
 
 # E99 Test Run to see if everything ok
 ~/Downloads/NetLogo6.1.1/netlogo-headless.sh --model Model_Coupled_withoutplots_4152021.nlogo --experiment E99_Experiment --table results_E99test.csv --threads 1
