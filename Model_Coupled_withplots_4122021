@@ -85,6 +85,9 @@ globals [
 
   ; % some variables to keep track of the performance of the model
   total_served                             ; total number of refugees that have been served in the food distribution
+  total_cooperative_served                 ; "" of cooperative refugees ""
+  total_competitive_served                 ; "" of competitive refugees ""
+  total_newcompetitive_served              ; "" of newcompetitive refugees ""
 
   ; tracking time spent in the process of getting food
   timeSpentFood_average_output
@@ -103,8 +106,11 @@ globals [
   trackingTimeInQueue_output_list
   ; tracking the actual time per attitude
   trackingTimeInQueue_cooperative_output_list
+  trackingTimeInQueue_cooperative_output
   trackingTimeInQueue_competitive_output_list
+  trackingTimeInQueue_competitive_output
   trackingTimeInQueue_newcompetitive_output_list
+  trackingTimeInQueue_newcompetitive_output
 
 
   numberNewCompetitive_output          ; number of agents who turned into new competitive
@@ -312,12 +318,18 @@ to setup
   set averageQueueSize_physical_output 0
   set numberCompetitiveJoining_output 0
   set total_served 0
+  set total_cooperative_served 0
+  set total_competitive_served 0
+  set total_newcompetitive_served 0
   set timeSpentFood_average_output 0
   set trackingTimeInQueue_average_output 0
   set trackingTimeInQueue_output_list []
   set trackingTimeInQueue_cooperative_output_list []
+  set trackingTimeInQueue_cooperative_output 0
   set trackingTimeInQueue_competitive_output_list []
+  set trackingTimeInQueue_competitive_output_list 0
   set trackingTimeInQueue_newcompetitive_output_list []
+  set trackingTimeInQueue_newcompetitive_output 0
   ;;
 
   set total_walker 0
@@ -1757,7 +1769,7 @@ to update-competitiveness-length
   set tendency-after-queuing (natural-tendency + impact-on-me)                                                                          ; update tendency-after-queuing as the natural-tendency they are born with plus the impact just calculated
 
   ; % check if went over threshold
-  if tendency-after-queuing > threshold-competitive [output-print who got-influenced]                                                   ; if the value is now higher than the threshold, update both attitude and behaviour (got-influenced)
+  if tendency-after-queuing > threshold-competitive [got-influenced]                                                   ; if the value is now higher than the threshold, update both attitude and behaviour (got-influenced)
 
 
 end
@@ -1991,11 +2003,13 @@ to refugee-served
 
     ; % (1) if the agent served is COOPERATIVE it is necessary to update both lists (as the agent is member of both) and update attributes
     if attitude = "cooperative" and [physical-waiting-list] of current-task != [] [                          ; make sure that physical list is not empty otherwise it will give an error
+      set total_cooperative_served total_cooperative_served + 1                                              ; update number of cooperative agents that has been served
       ask current-task [set physical-waiting-list remove myself physical-waiting-list]                       ; remove self from the physical waiting list (as self was just served)
       update-physical-queue                                                                                  ; update the physical waiting list so that everyone moves forward
       ask current-task [set serving-waiting-list remove myself serving-waiting-list]                         ; remove self from the serving waiting list (as self was just served)
       set timeSpentFood_cooperative_output_list lput time-spent-food timeSpentFood_cooperative_output_list   ; track time depending on their attitude
-      set trackingTimeInQueue_cooperative_output_list lput tracking-time-in-queue trackingTimeInQueue_cooperative_output_list ; same but with the perfected tracked time
+      set trackingTimeInQueue_cooperative_output_list lput tracking-time-in-queue trackingTimeInQueue_cooperative_output_list  ; same but with the perfected tracked time
+      set trackingTimeInQueue_cooperative_output ( sum trackingTimeInQueue_cooperative_output_list / total_cooperative_served) ; variable that keeps track of the current average time in queue per attitude
       update-serving-queue                                                                                   ; update the serving queue
       set current-task -50                              ; set the current-task of the refugee who was served to -50 so it goes back into wandering around again
       set number-in-physical-queue -50                  ; set attribute to after queuing value (helps debugging)
@@ -2026,9 +2040,11 @@ to refugee-served
 
     ; % (2) if the agent served is COMPETITIVE it is only necessary to update the serving list (as it was never part of the physical and the position of cooperative people won't change) and update attributes
     if attitude = "competitive" [
+      set total_competitive_served total_competitive_served + 1                                             ; update number of competitive agents that has been served
       ask current-task [set serving-waiting-list remove myself serving-waiting-list]                        ; remove self from the serving waiting list (as self was just served)
       set timeSpentFood_competitive_output_list lput time-spent-food timeSpentFood_competitive_output_list  ; track time depending on their attitude
       set trackingTimeInQueue_competitive_output_list lput tracking-time-in-queue trackingTimeInQueue_competitive_output_list ; same but with the perfected tracked time
+      set trackingTimeInQueue_competitive_output ( sum trackingTimeInQueue_competitive_output_list / total_competitive_served) ; variable that keeps track of the current average time in queue per attitude
       update-serving-queue                                                                                  ; update the serving queue
       set current-task -50                              ; set the current-task of the refugee who was served to -50 so it goes back into wandering around again
       set number-in-physical-queue -50                  ; set attribute to after queuing value (helps debugging)
@@ -2049,9 +2065,11 @@ to refugee-served
 
     ;; (3) if the agent served is NEW COMPETITIVE, it is only necessary to update the serving list and update attributes
     if attitude = "new-competitive" [
+      set total_newcompetitive_served total_newcompetitive_served + 1                                              ; update number of newcompetitive agents that has been served
       ask current-task [set serving-waiting-list remove myself serving-waiting-list]                               ; remove self from the serving waiting list (as self was just served)
       set timeSpentFood_newcompetitive_output_list lput time-spent-food timeSpentFood_newcompetitive_output_list   ; track time depending on their attitude
       set trackingTimeInQueue_newcompetitive_output_list lput tracking-time-in-queue trackingTimeInQueue_newcompetitive_output_list ; same but with the perfected tracked time
+      set trackingTimeInQueue_newcompetitive_output ( sum trackingTimeInQueue_newcompetitive_output_list / total_newcompetitive_served) ; variable that keeps track of the current average time in queue per attitude
       update-serving-queue                                                                                         ; update the serving queue
       set current-task -22                              ; set the current-task of the refugee who was served to -22 so it goes back into wandering around again
       set number-in-physical-queue -22                  ; set attribute to after queuing value (helps debugging)
@@ -2739,7 +2757,7 @@ percentage-competitive
 percentage-competitive
 0
 100
-20.0
+0.0
 1
 1
 NIL
@@ -2769,7 +2787,7 @@ impact-seeing-cutting
 impact-seeing-cutting
 0
 20
-13.0
+4.0
 1
 1
 NIL
@@ -4378,6 +4396,121 @@ export-output (word "output-mobility_" mobility "_timer_" timer)</final>
     </enumeratedValueSet>
     <enumeratedValueSet variable="show-colors?">
       <value value="false"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="E99_Experiment" repetitions="1" runMetricsEveryStep="true">
+    <setup>setup
+initiate-corona
+create-COVID-facility</setup>
+    <go>go</go>
+    <timeLimit steps="15000"/>
+    <metric>ticks</metric>
+    <metric>Day</metric>
+    <metric>Hour</metric>
+    <metric>Minute</metric>
+    <metric>count tents</metric>
+    <metric>count tents with [(my-age = "elderly") and (infected? = true)]</metric>
+    <metric>count tents with [(my-age = "child") and (infected? = true)]</metric>
+    <metric>count tents with [(my-age = "adult") and (infected? = true)]</metric>
+    <metric>count tents with [(my-age = "elderly") and (infection = "symptomatic")]</metric>
+    <metric>count tents with [(my-age = "child") and (infection = "symptomatic")]</metric>
+    <metric>count tents with [(my-age = "adult") and (infection = "symptomatic")]</metric>
+    <metric>count tents with [(my-age = "elderly") and (infection = "severely-symptomatic")]</metric>
+    <metric>count tents with [(my-age = "child") and (infection = "severely-symptomatic")]</metric>
+    <metric>count tents with [(my-age = "adult") and (infection = "severely-symptomatic")]</metric>
+    <metric>count tents with [(my-age = "elderly") and (infection = "critical")]</metric>
+    <metric>count tents with [(my-age = "child") and (infection = "critical")]</metric>
+    <metric>count tents with [(my-age = "adult") and (infection = "critical")]</metric>
+    <metric>count tents with [(my-age = "elderly") and (infection = "recovered")]</metric>
+    <metric>count tents with [(my-age = "child") and (infection = "recovered")]</metric>
+    <metric>count tents with [(my-age = "adult") and (infection = "recovered")]</metric>
+    <metric>cum-dead</metric>
+    <metric>cum-recovered</metric>
+    <metric>[ic-capacity] of one-of covid-facilities</metric>
+    <metric>[bed-capacity] of one-of covid-facilities</metric>
+    <metric>trackingTimeInQueue_average_output</metric>
+    <metric>trackingTimeInQueue_cooperative_output</metric>
+    <metric>trackingTimeInQueue_competitive_output</metric>
+    <metric>trackingTimeInQueue_newcompetitive_output</metric>
+    <metric>total_served</metric>
+    <metric>numberCompetitiveJoining_output</metric>
+    <metric>numberNewCompetitive_output</metric>
+    <metric>averageQueueSize_serving_output</metric>
+    <metric>averageQueueSize_physical_output</metric>
+    <enumeratedValueSet variable="compliance">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="transmission-probability">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="social-distancing">
+      <value value="1.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="factor-asymptomatic">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="food-delivery-day">
+      <value value="8"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mask-usage">
+      <value value="&quot;no&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mask-effect">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="household-size">
+      <value value="&quot;5 - 10% elderly&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="plotsize-shelters">
+      <value value="&quot;12,5 m2&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="mobility">
+      <value value="&quot;free&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="poor-conditions?">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="block-size">
+      <value value="&quot;120 shelters&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="radius-visibility">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="distribution-pick-up">
+      <value value="&quot;normal&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="acceptable-length">
+      <value value="70"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="threshold-competitive">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="poisson-mean">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="impact-long-queues">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="impact-seeing-cutting">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="hours-open">
+      <value value="8"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="impact-length?">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="policy-implemented">
+      <value value="&quot;policy 0 (baseline)&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="time-slot?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="initial-corona-number">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="percentage-competitive">
+      <value value="0"/>
     </enumeratedValueSet>
   </experiment>
 </experiments>
