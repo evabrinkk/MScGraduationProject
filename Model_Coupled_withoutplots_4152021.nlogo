@@ -4465,7 +4465,7 @@ create-COVID-facility</setup>
       <value value="0"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="E0_BaselineAllScenarios(10x)" repetitions="10" runMetricsEveryStep="true">
+  <experiment name="E0_BaselineAllScenarios" repetitions="10" runMetricsEveryStep="true">
     <setup>setup
 initiate-corona
 create-COVID-facility</setup>
@@ -4584,7 +4584,7 @@ create-COVID-facility</setup>
       <value value="40"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="E1_AllPoliciesCompetitive0(10x)" repetitions="10" runMetricsEveryStep="true">
+  <experiment name="E1_AllPoliciesCompetitive0" repetitions="10" runMetricsEveryStep="true">
     <setup>setup
 initiate-corona
 create-COVID-facility</setup>
@@ -4702,7 +4702,7 @@ create-COVID-facility</setup>
       <value value="0"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="E2_AllPoliciesCompetitive10(10x)" repetitions="10" runMetricsEveryStep="true">
+  <experiment name="E2_AllPoliciesCompetitive10" repetitions="10" runMetricsEveryStep="true">
     <setup>setup
 initiate-corona
 create-COVID-facility</setup>
@@ -4820,7 +4820,7 @@ create-COVID-facility</setup>
       <value value="10"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="E3_AllPoliciesCompetitive20(10x)" repetitions="10" runMetricsEveryStep="true">
+  <experiment name="E3_AllPoliciesCompetitive20" repetitions="10" runMetricsEveryStep="true">
     <setup>setup
 initiate-corona
 create-COVID-facility</setup>
@@ -4938,7 +4938,7 @@ create-COVID-facility</setup>
       <value value="20"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="E4_AllPoliciesCompetitive30(10x)" repetitions="10" runMetricsEveryStep="true">
+  <experiment name="E4_AllPoliciesCompetitive30" repetitions="10" runMetricsEveryStep="true">
     <setup>setup
 initiate-corona
 create-COVID-facility</setup>
@@ -5056,7 +5056,7 @@ create-COVID-facility</setup>
       <value value="30"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="E5_AllPoliciesCompetitive40(10x)" repetitions="10" runMetricsEveryStep="true">
+  <experiment name="E5_AllPoliciesCompetitive40" repetitions="10" runMetricsEveryStep="true">
     <setup>setup
 initiate-corona
 create-COVID-facility</setup>
@@ -5174,7 +5174,7 @@ create-COVID-facility</setup>
       <value value="40"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="E6_BaselineTimeSlotAllScenarios(10x)" repetitions="10" runMetricsEveryStep="true">
+  <experiment name="E6_BaselineTimeSlotAllScenarios" repetitions="10" runMetricsEveryStep="true">
     <setup>setup
 initiate-corona
 create-COVID-facility</setup>
