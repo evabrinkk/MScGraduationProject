@@ -2397,10 +2397,8 @@ to default-values
   set hours-open 8
   set distribution-pick-up "normal"
   set poisson-mean 3
-  set threshold-competitive 50          ; tendency to competitiveness threshold to turn competitive
   set radius-visibility 4               ; the visibility of agents (used to influence some agents when they see people cutting the line around them)
   set impact-seeing-cutting 4           ; impact of seeing a person cutting the line (adds up to tendency-to-competitiveness)
-  set impact-long-queues 5              ; impact of long queues (adds up to tendency-to-competitiveness)
   set acceptable-length 70              ; maximum length of queue that people still accept (from this length on, people add the "impact-long-queues" value to their competititveness)
   set impact-length? True
 
@@ -3693,34 +3691,32 @@ create-COVID-facility</setup>
     <metric>trackingTimeInQueue_average_output</metric>
     <metric>min_queuingtime</metric>
     <metric>max_queuingtime</metric>
-    <enumeratedValueSet variable="acceptable-length">
-      <value value="50"/>
-      <value value="70"/>
-      <value value="105"/>
-    </enumeratedValueSet>
     <enumeratedValueSet variable="threshold-competitive">
-      <value value="25"/>
+      <value value="30"/>
+      <value value="40"/>
       <value value="50"/>
-      <value value="75"/>
+      <value value="60"/>
+      <value value="70"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="impact-long-queues">
-      <value value="2.5"/>
-      <value value="5"/>
-      <value value="7.5"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="impact-seeing-cutting">
-      <value value="2"/>
+      <value value="3"/>
       <value value="4"/>
+      <value value="5"/>
       <value value="6"/>
+      <value value="7"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="initial-corona-number">
       <value value="1"/>
+      <value value="2"/>
       <value value="3"/>
+      <value value="4"/>
       <value value="5"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="service-timeSA">
       <value value="2"/>
+      <value value="3"/>
       <value value="4"/>
+      <value value="5"/>
       <value value="6"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="policy-implemented">
