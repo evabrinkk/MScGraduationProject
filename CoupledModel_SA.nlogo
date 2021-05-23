@@ -2949,7 +2949,7 @@ impact-long-queues
 impact-long-queues
 0
 20
-5.0
+7.0
 1
 1
 NIL
@@ -3010,7 +3010,7 @@ CHOOSER
 59
 initial-corona-number
 initial-corona-number
-1 5 10 15 20
+1 2 3 4 5 10 15 20
 0
 
 SLIDER
@@ -3022,7 +3022,7 @@ service-timeSA
 service-timeSA
 1
 10
-4.0
+6.0
 1
 1
 NIL
