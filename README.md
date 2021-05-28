@@ -1,7 +1,7 @@
 # MScGraduationProject
 Models and data analysis scripts used for my graduation project in MSc Engineering and Policy Analysis. This projects builds on the work done by Bogel in 2020 (see repository: MeykeNB/Covid-19-in-refugee-camps)
 
-Goal: find a robust policy for food distribution in refugee settlements during a COVID-19 outbreak given the mix of behaviour of refugees when queuing 
+Goal: find a robust policy for food distribution in refugee settlements during a COVID-19 outbreak given the mix of behaviour of refugees when queuing  <br />
 Process: Developed a queuing model, coupled the queuing model with the work done by Bogel, run experiments, analyze results 
 
 The material in this github page is divided into 5 parts:
