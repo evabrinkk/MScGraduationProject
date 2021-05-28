@@ -5,7 +5,9 @@ Goal: find a robust policy for food distribution in refugee settlements during a
 Process: Developed a queuing model, coupled the queuing model with the work done by Bogel, run experiments, analyze results 
 
 The material in this github page is divided into 5 parts:
+
 1. Model (all in NetLogo)
+
       1.1 Queuing Model [Model_Queuing_4122021]
       1.2 Coupled Model (Bogel's model with the queuing process integrated) [CoupledModel_Final]
       1.3 Model used for the Sensitivity Analysis (slight variation to include specific outputs) [CoupledModel_SA]
