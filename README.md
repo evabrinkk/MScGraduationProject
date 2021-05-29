@@ -8,8 +8,8 @@ Process: Developed a queuing model, coupled the queuing model with the work done
 The material in this github page is divided into 5 folders. The name of each file is written as _[nameofthefile]_  <br />
 
 **1. Model (all in NetLogo)**  <br />
-    1.1. Queuing Model _[Model_Queuing_4122021]_  <br />
-    1.2  Coupled Model (Bogel's model with the queuing process integrated) _[CoupledModel_Final]_ <br />
+      1.1. Queuing Model _[Model_Queuing_4122021]_  <br />
+      1.2  Coupled Model (Bogel's model with the queuing process integrated) _[CoupledModel_Final]_ <br />
       
 **2. Supportive Conceptualization** <br />
     2.1 Flowchart Queuing model - shows the logic behind the queuing model _[Flowchart_Queuing]_ <br />
