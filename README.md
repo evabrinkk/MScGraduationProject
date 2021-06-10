@@ -27,11 +27,10 @@ The material in this github page is divided into 5 folders. The name of each fil
     3.7 Experiment 6 - Timeslot-based policy with policy 1 across two scenarios <br />
       
 **4. Data preparation, analysis and visualization (Jupyter Notebooks)** <br />
-    4.1 Notebook Baseline  <br />
-    4.2 Notebook Experiments <br />
-    4.3 Notebook Experiment 6 <br />
-    4.4 Notebook Hypothesis I <br />
-    4.5 Notebook Hypothesis II  <br />
+    4.1 Notebook Baseline - Queuing dynamics  <br />
+    4.2 Notebook Experiments - Infection dynamics <br />
+    4.3 Notebook Representative-based policies <br />
+    4.4 Notebook Timeslot-based policies <br />
       
 **5. Sensitivity Analysis** <br />
     5.1 Model used for the Sensitivity Analysis (slight variation to include specific outputs) _[CoupledModel_SA]_ <br />
