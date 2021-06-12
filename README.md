@@ -8,8 +8,8 @@ Process: Developed a queuing model, coupled the queuing model with the work done
 The material in this github page is divided into 5 folders. The name of each file is written as _[nameofthefile]_  <br />
 
 **1. Model and running**  <br />
-      1.1. Queuing Model _[Model_Queuing_4122021]_  <br />
-      1.2  Coupled Model (Bogel's model with the queuing process integrated) _[CoupledModel_Final]_ <br />
+      1.1. Queuing Model _[Model_Queuing_4122021.nlogo]_  <br />
+      1.2  Coupled Model (Bogel's model with the queuing process integrated) _[CoupledModel_Final.nlogo]_ <br />
       1.3  Running NetLogo headless for experiments _[new_experiments.sh]_ <br />
 
 **2. Supportive Conceptualization** <br />
@@ -24,7 +24,7 @@ The material in this github page is divided into 5 folders. The name of each fil
     3.4 Experiment 3 - Scenario 2 with all representative-based policies (same as above) <br />
     3.5 Experiment 4 - Scenario 3 with all representative-based policies (same as above) <br />
     3.6 Experiment 5 - Scenario 4 with all representative-based policies (same as above) <br />
-    3.7 Experiment 6 - Timeslot-based policy with policy 1 across two scenarios _[exp6df]_ + _[exp6df_2ndtry]_ and _[timeslot_first]_ + _[timeslot_second]_ <br />
+    3.7 Experiment 6 - Timeslot-based policy with policy 1 across two scenarios _[exp6df.csv]_ + _[exp6df_2ndtry.csv]_ and _[timeslot_first]_ + _[timeslot_second]_ <br />
     
       
 **4. Data preparation, analysis and visualization (Jupyter Notebooks)** <br />
@@ -34,7 +34,7 @@ The material in this github page is divided into 5 folders. The name of each fil
     4.4 Notebook Timeslot-based policies <br />
       
 **5. Sensitivity Analysis** <br />
-    5.1 Model used for the Sensitivity Analysis (slight variation to include specific outputs) _[CoupledModel_SA]_ <br />
+    5.1 Model used for the Sensitivity Analysis (slight variation to include specific outputs) _[CoupledModel_SA.nlogo]_ <br />
     5.2 Running NetLogo headless for senstivity analysis _[SA_headless.sh]_ <br />
     5.3 Pre-processing .csv from sensitivity analysis _[script3.py]_ <br />
     5.4 .csv file for Sensitivity Analysis  _[SA_cleanresults3.csv]_ <br /> 
