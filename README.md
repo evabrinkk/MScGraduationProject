@@ -18,15 +18,14 @@ The material in this github page is divided into 5 folders. The name of each fil
     2.3 Flowchart Coupling process - shows the coupling process (at a very high level) _[Flowchart_Coupling]_ <br />
     
 **3. Results (both .csv and text files; organized in folders to make it easier)** <br />
-    3.1 Experiment 0 - Baseline across all scenarios <br />
-    3.2 Experiment 1 - Scenario 0 with all representative-based policies <br />
-    3.3 Experiment 2 - Scenario 1 with all representative-based policies <br />
-    3.4 Experiment 3 - Scenario 2 with all representative-based policies <br />
-    3.5 Experiment 4 - Scenario 3 with all representative-based policies <br />
-    3.6 Experiment 5 - Scenario 4 with all representative-based policies <br />
-    3.7 Experiment 6 - Timeslot-based policy with policy 1 across two scenarios <br />
+    3.1 Experiment 0 - Baseline across all scenarios     _[exp0df]_ and _[50 textfiles]_ <br />
+    3.2 Experiment 1 - Scenario 0 with all representative-based policies _[AllPolicie_combined]_ and _[total_dict]_ <br />
+    3.3 Experiment 2 - Scenario 1 with all representative-based policies (same as above) <br />
+    3.4 Experiment 3 - Scenario 2 with all representative-based policies (same as above) <br />
+    3.5 Experiment 4 - Scenario 3 with all representative-based policies (same as above) <br />
+    3.6 Experiment 5 - Scenario 4 with all representative-based policies (same as above) <br />
+    3.7 Experiment 6 - Timeslot-based policy with policy 1 across two scenarios _[exp6df]_ + _[exp6df_2ndtry]_ and _[timeslot_first]_ + _[timeslot_second]_ <br />
     
-    (not uploaded yet)
       
 **4. Data preparation, analysis and visualization (Jupyter Notebooks)** <br />
     4.1 Notebook Baseline - Queuing dynamics  <br />
